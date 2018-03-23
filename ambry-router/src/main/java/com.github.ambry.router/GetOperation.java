@@ -170,7 +170,8 @@ abstract class GetOperation {
 
   /**
    * Set the exception associated with this operation.
-   * A {@link ServerErrorCode#Blob_Deleted} or {@link ServerErrorCode#Blob_Expired} or {@link ServerErrorCode#Blob_Expired}
+   * A {@link ServerErrorCode#Blob_Deleted} or {@link ServerErrorCode#Blob_Expired} or
+   * {@link ServerErrorCode#Blob_Authorization_Failure}
    * error overrides any other previously received exception.
    * @param exception the {@link RouterException} to possibly set.
    */
