@@ -68,7 +68,7 @@ public class PartitionRequestInfo {
       ids.add(id);
       blobCount--;
     }
-    return new PartitionRequestInfo(partitionId, ids);
+    return null; // new PartitionRequestInfo(partitionId, ids);
   }
 
   public void writeTo(ByteBuffer byteBuffer) {
