@@ -35,6 +35,11 @@ allprojects {
         mavenCentral()
         mavenLocal()
     }
+
+    tasks.withType(JavaCompile) {
+     // In Gradle 4.9+, prefer using tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += [ '-XepAllErrorsAsWarnings' ]
+    }
 }
 
 subprojects {
