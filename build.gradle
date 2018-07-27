@@ -13,6 +13,9 @@ buildscript {
         mavenCentral()
     }
     apply from: file('gradle/buildscript.gradle'), to: buildscript
+    dependencies {
+        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.16"
+    }
 }
 
 apply from: file('gradle/license.gradle')
@@ -26,6 +29,7 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'project-report'
     apply plugin: 'jacoco'
+    apply plugin: "net.ltgt.errorprone"
 
     repositories {
         mavenCentral()
