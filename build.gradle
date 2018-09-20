@@ -13,14 +13,16 @@ buildscript {
         mavenCentral()
     }
     apply from: file('gradle/buildscript.gradle'), to: buildscript
-    dependencies {
-        classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.16"
-    }
 }
 
 apply from: file('gradle/license.gradle')
 apply from: file('gradle/environment.gradle')
 apply from: file("gradle/dependency-versions.gradle")
+
+
+if( Boolean.parseBoolean(getProperty("MuseErrorprone")) == true ){
+    apply from: file("gradle/errorprone.gradle"), to: allprojects
+}
 
 allprojects {
     group = "com.github.ambry"
@@ -29,17 +31,12 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'project-report'
     apply plugin: 'jacoco'
-    apply plugin: "net.ltgt.errorprone"
 
     repositories {
         mavenCentral()
         mavenLocal()
     }
 
-    tasks.withType(JavaCompile) {
-     // In Gradle 4.9+, prefer using tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs += [ '-XepAllErrorsAsWarnings' ]
-    }
 }
 
 subprojects {
